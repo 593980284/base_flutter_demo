@@ -3,5 +3,5 @@
 //   "loout": ['logout', 'GET']
 // };
 
-const dynamic USERPAI_login = 'login';
-const dynamic USERPAI_logout =  ['logout', 'GET'];
+const String USERPAI_login = 'login';
+const List USERPAI_logout =  ['logout', 'GET'];
