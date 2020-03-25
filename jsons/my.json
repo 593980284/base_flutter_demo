@@ -1,0 +1,7 @@
+{
+    "name":"wendux",
+    "keywords":"$[]String",
+    "age":20,
+    "name2":"wendux",
+    "@JsonKey(name: '+1') int": "loved"
+  }

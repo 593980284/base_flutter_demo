@@ -1,0 +1,13 @@
+
+{
+    "name":"wendux",
+    "father":"$User", 
+    "friends":"$[]User", 
+    "keywords":"$[]String",
+    "age":20,
+    "name2":"wendux",
+    "@JsonKey(name: '+1') int": "loved",
+    "users":"$[]My",
+    "@JsonKey(ignore: true) dynamic":"md",
+    "sww": "$Sw"
+  }
