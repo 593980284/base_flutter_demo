@@ -1,50 +1,33 @@
 import 'package:dio/dio.dart';
 
-
-
-Dio dio = Dio(BaseOptions(
-    baseUrl: "https://www.baidu.com",
-    connectTimeout: 5000,
-    receiveTimeout: 3000,
-    
+Dio hc_dio = Dio(BaseOptions(
+  baseUrl: "https://www.baidu.com",
+  connectTimeout: 5000,
+  receiveTimeout: 3000,
 ));
 
-
-
-void initDio(){
+int initDio() {
   addInterceptors();
   setHeaders({});
+  return 0;
 }
 
-void setHeaders(Map<String, dynamic> headers){
-  dio.options.headers = headers;
+//为了调用方法
+int ___initDio = initDio();
+
+void setHeaders(Map<String, dynamic> headers) {
+  hc_dio.options.headers = headers;
 }
 
-void addHeaders(Map<String, dynamic> headers){
-  dio.options.headers.addAll(headers);
+void addInterceptors() {
+  hc_dio.interceptors
+      .add(InterceptorsWrapper(onRequest: (RequestOptions options) async {
+    //添加header
+    return options;
+  }, onResponse: (Response response) async {
+    return response;
+  }, onError: (DioError e) async {
+    return e;
+  }));
 }
-
-void removeHeader(String key){
-  dio.options.headers.remove(key);
-}
-
-void addInterceptors(){
-   dio.interceptors.add(InterceptorsWrapper(
-    onRequest:(RequestOptions options) async {
-      //添加header
-     return options;
-    },
-    onResponse:(Response response) async {
-     return response;
-    },
-    onError: (DioError e) async {
-     return  e;
-    }
-));
-}
-
-void changeBaseUrl(String baseUrl){
-  dio.options.baseUrl = baseUrl;
-}
-
 

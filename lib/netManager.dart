@@ -26,7 +26,7 @@ Future<T> NetRequest<T>(dynamic api, {Map params}) async{
     }
   }
   try{
-   Response response = await dio.request<Map<String, dynamic>>(
+   Response response = await hc_dio.request<Map<String, dynamic>>(
                                   path, 
                                   data: params,
                                   options: Options(method: method));
@@ -70,4 +70,19 @@ Future<T> NetRequest<T>(dynamic api, {Map params}) async{
   }catch (e){
       return Future.error(NetError(999,'!请求失败'));
   }
+}
+
+//添加header
+void addHeaders(Map<String, dynamic> headers){
+  hc_dio.options.headers.addAll(headers);
+}
+
+//根据key移除header
+void removeHeader(String key){
+  hc_dio.options.headers.remove(key);
+}
+
+//改变baseUrl
+void changeBaseUrl(String baseUrl) {
+  hc_dio.options.baseUrl = baseUrl;
 }
